@@ -1,0 +1,8 @@
+{
+  "name": "devnotes.com",
+  "version": "1.0.0",
+  "description": "DevNotes is my blog website.",
+  "main": "main.go",
+  "author": "M. Hassan",
+  "license": "MIT"
+}
