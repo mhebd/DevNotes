@@ -1,8 +1,13 @@
 {
-  "name": "devnotes.com",
-  "version": "1.0.0",
-  "description": "DevNotes is my blog website.",
-  "main": "main.go",
-  "author": "M. Hassan",
-  "license": "MIT"
+	"name": "devnotes.com",
+	"version": "1.0.0",
+	"description": "DevNotes is my blog website.",
+	"scripts": {
+		"start": "go run main.go",
+		"dev": "nodemon --exec go run main.go --signal SIGTERM -e go,gohtml,json,css",
+		"db": "sudo systemctl start mongod"
+	},
+	"main": "main.go",
+	"author": "M. Hassan",
+	"license": "MIT"
 }
