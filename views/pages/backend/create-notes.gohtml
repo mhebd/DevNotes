@@ -1,0 +1,38 @@
+{{template "backend-layout"}}
+
+{{define "backend-page"}}
+<div class="card mb-4">
+  <div class="card-header"><strong>Create Note</strong><span class="small ms-1">Create a new note</span></div>
+  <div class="card-body">
+    <form action="/dashboard/notes/create-note" method="post" enctype="multipart/form-data" class="form">
+      <div class="mb-3">
+        <label class="form-label" for="title">Note Title</label>
+        <input class="form-control" name="title" id="title" type="text" placeholder="Notes title" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Select Category</label>
+        <select name="category" id="category" class="form-control">
+          {{range .}}
+          <option value="{{.Category}}">{{ .Category }}</option>
+          {{end}}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="cover-img" class="form-label">Cover image</label>
+        <input type="file" name="cover-img" id="cover-img" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="content">Your Note</label>
+        <textarea class="form-control" name="content" id="content" rows="3" placeholder="Your Note..."
+          required></textarea>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+{{end}}

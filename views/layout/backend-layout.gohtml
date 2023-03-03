@@ -1,0 +1,51 @@
+{{define "backend-layout"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Dev Notes Dashboard</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <!-- Vendors styles-->
+  <link rel="stylesheet" href="/static/backend/vendors/simplebar/css/simplebar.css">
+  <link rel="stylesheet" href="/static/backend/css/vendors/simplebar.css">
+  <!-- Main styles for this application-->
+  <link href="/static/backend/css/style.css" rel="stylesheet">
+
+  <link href="/static/backend/vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
+</head>
+
+<body>
+  {{template "backend-sidebar" .}}
+
+  <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    {{template "backend-header" .}}
+
+    <div class="body flex-grow-1 px-3">
+      <div class="container-lg">
+        {{block "backend-page" .}}
+
+        {{end}}
+      </div>
+    </div>
+    {{template "backend-footer" .}}
+  </div>
+
+
+  <!-- CoreUI and necessary plugins-->
+  <script src="/static/backend/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+  <script src="/static/backend/vendors/simplebar/js/simplebar.min.js"></script>
+  <!-- Plugins and scripts required by this view-->
+  <script src="/static/backend/vendors/@coreui/chartjs/js/coreui-chartjs.js"></script>
+  <script src="/static/backend/vendors/chart.js/js/chart.min.js"></script>
+  <script src="/static/backend/vendors/@coreui/utils/js/coreui-utils.js"></script>
+  <script src="/static/backend/js/main.js"></script>
+  <script>
+  </script>
+
+</body>
+
+</html>
+{{end}}

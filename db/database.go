@@ -13,6 +13,9 @@ import (
 )
 
 var DB *mongo.Database
+var User *mongo.Collection
+var Category *mongo.Collection
+var Note *mongo.Collection
 
 // Connect a database
 func Start() {
@@ -43,6 +46,12 @@ func Start() {
 
 	// Create a database with this client
 	DB = client.Database("devnotes")
+
+	if DB.Name() == "devnotes" {
+		User = DB.Collection("users")
+		Category = DB.Collection("categories")
+		Note = DB.Collection("notes")
+	}
 	fmt.Println("\"" + DB.Name() + "\" database connected successful")
 }
 

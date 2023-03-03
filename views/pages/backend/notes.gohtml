@@ -1,0 +1,39 @@
+{{template "backend-layout"}}
+
+{{define "backend-page"}}
+<div class="card mb-4">
+  <div class="card-header d-flex justify-content-between">
+    <p><strong>Notes</strong><span class="small ms-1">All Notes</span></p>
+    <a href="/dashboard/notes/create-note" class="btn btn-primary">Write a note</a>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Category</th>
+          <th scope="col">Created</th>
+          <th scope="col" colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range $i, $v := .}}
+        <tr>
+          <th scope="row">
+            <script>
+              document.write(1 + `{{$i}}` * 1)
+            </script>
+          </th>
+          <td>{{$v.Title}}</td>
+          <td>{{$v.Category}}</td>
+          <td>{{$v.Created}}</td>
+          <td><a href="/dashboard/notes/create-note/{{$v.Id}}" class="btn btn-primary">Edit</a></td>
+          <td><a href="/dashboard/notes/delete/{{$v.Id}}" class="btn btn-danger text-light">Delete</a></td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+</div>
+{{end}}
