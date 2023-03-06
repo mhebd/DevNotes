@@ -16,6 +16,7 @@ var DB *mongo.Database
 var User *mongo.Collection
 var Category *mongo.Collection
 var Note *mongo.Collection
+var Page *mongo.Collection
 
 // Connect a database
 func Start() {
@@ -51,6 +52,7 @@ func Start() {
 		User = DB.Collection("users")
 		Category = DB.Collection("categories")
 		Note = DB.Collection("notes")
+		Page = DB.Collection("pages")
 	}
 	fmt.Println("\"" + DB.Name() + "\" database connected successful")
 }

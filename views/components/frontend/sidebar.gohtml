@@ -4,19 +4,18 @@
     <div class="sidebar-widget">
       <div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
         <h2 class="sidebar-widget-title text-center">
-          Categorys
+          Categories
         </h2>
         <div class="sidebar-widget-content">
           <ul>
-            <li><a href="#">Category 01</a></li>
-            <li><a href="#">Category 02</a></li>
-            <li><a href="#">Category 03</a></li>
-            <li><a href="#">Category 04</a></li>
-            <li><a href="#">Category 05</a></li>
+            {{range .Categories}}
+            <li><a href="/search?category={{.Category}}">{{.Category}}</a></li>
+            {{end}}
           </ul>
         </div>
-      </div> <!-- single widget end-->
-      <div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
+      </div>
+
+      <!-- <div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
         <h2 class="sidebar-widget-title text-center">
           Archive
         </h2>
@@ -29,7 +28,7 @@
             <li><a href="#">Archive 05</a></li>
           </ul>
         </div>
-      </div> <!-- single widget end-->
+      </div> 
       <div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
         <h2 class="sidebar-widget-title text-center">
           Tag List
@@ -43,7 +42,8 @@
             <li><a href="#">Tag 05</a></li>
           </ul>
         </div>
-      </div> <!-- single widget end-->
+      </div>  -->
+
     </div>
   </aside>
 </div> <!-- left side end-->

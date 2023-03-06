@@ -11,6 +11,26 @@ import (
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	var notes []models.Note
-	utility.FetchMany(w, db.Note, &notes)
-	views.RenderF(w, "home.gohtml", notes)
+	err := utility.FetchMany(w, db.Note, &notes)
+	if err != nil {
+		utility.ServerErr(w, err)
+		return
+	}
+
+	var categories []models.Category
+	err = utility.FetchMany(w, db.Category, &categories)
+	if err != nil {
+		utility.ServerErr(w, err)
+		return
+	}
+
+	var data = struct {
+		Notes      []models.Note
+		Categories []models.Category
+	}{
+		Notes:      notes,
+		Categories: categories,
+	}
+
+	views.RenderF(w, "home.gohtml", data)
 }

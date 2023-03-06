@@ -1,0 +1,26 @@
+{{template "backend-layout"}}
+
+{{define "backend-page"}}
+<div class="card mb-4">
+  <div class="card-header"><strong>Create Page</strong><span class="small ms-1">Create a new Page</span></div>
+  <div class="card-body">
+    <form action="/dashboard/pages/create-page" method="post" class="form">
+      <div class="mb-3">
+        <label class="form-label" for="title">Page Title</label>
+        <input class="form-control" name="title" id="title" type="text" placeholder="Notes title" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="content">Page Content</label>
+        <textarea class="form-control" name="content" id="content" rows="13" placeholder="Page Content..."
+          required></textarea>
+
+      </div>
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+{{end}}

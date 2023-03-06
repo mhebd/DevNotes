@@ -19,7 +19,11 @@ import (
 // Fetch all notes for dashboard notes page
 func NotesPage(w http.ResponseWriter, r *http.Request) {
 	var notes []models.Note
-	utility.FetchMany(w, db.Note, &notes)
+	err := utility.FetchMany(w, db.Note, &notes)
+	if err != nil {
+		utility.ServerErr(w, err)
+		return
+	}
 	views.RenderB(w, "notes.gohtml", notes)
 }
 
@@ -46,7 +50,12 @@ func SingleNote(w http.ResponseWriter, r *http.Request) {
 // Create a note form page
 func CreateNotePage(w http.ResponseWriter, r *http.Request) {
 	var categories []models.Category
-	utility.FetchMany(w, db.Category, &categories)
+	err := utility.FetchMany(w, db.Category, &categories)
+	if err != nil {
+		utility.ServerErr(w, err)
+		return
+	}
+
 	views.RenderB(w, "create-notes.gohtml", categories)
 }
 
@@ -85,6 +94,8 @@ func CreateNote(w http.ResponseWriter, r *http.Request) {
 	title := r.Form.Get("title")
 	category := r.Form.Get("category")
 	content := r.Form.Get("content")
+	excerpt := r.Form.Get("excerpt")
+	tag := r.Form.Get("tag")
 
 	newNote := models.Note{
 		Title:    title,
@@ -92,7 +103,9 @@ func CreateNote(w http.ResponseWriter, r *http.Request) {
 		Image:    "/static/images/" + handler.Filename,
 		Content:  content,
 		Writer:   "Admin",
-		Created:  string(time.Now().Format("January 2, 2006")),
+		Excerpt:  excerpt,
+		Tag:      tag,
+		Created:  string(time.Now().Format("January 2, 2006 15:04:05")),
 	}
 
 	_, err = db.Note.InsertOne(context.Background(), newNote)

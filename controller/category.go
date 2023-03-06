@@ -14,7 +14,12 @@ import (
 // Fetch all categories for dashboard categories page
 func CategoryPage(w http.ResponseWriter, r *http.Request) {
 	var categories []models.Category
-	utility.FetchMany(w, db.Category, &categories)
+	err := utility.FetchMany(w, db.Category, &categories)
+	if err != nil {
+		utility.ServerErr(w, err)
+		return
+	}
+
 	views.RenderB(w, "categories.gohtml", categories)
 }
 

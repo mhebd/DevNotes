@@ -10,25 +10,42 @@
         <input class="form-control" name="title" id="title" type="text" placeholder="Notes title" required>
       </div>
 
-      <div class="mb-3">
-        <label for="category" class="form-label">Select Category</label>
-        <select name="category" id="category" class="form-control">
-          {{range .}}
-          <option value="{{.Category}}">{{ .Category }}</option>
-          {{end}}
-        </select>
-      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="category" class="form-label">Select Category</label>
+            <select name="category" id="category" class="form-control">
+              {{range .}}
+              <option value="{{.Category}}">{{ .Category }}</option>
+              {{end}}
+            </select>
+          </div>
 
-      <div class="mb-3">
-        <label for="cover-img" class="form-label">Cover image</label>
-        <input type="file" name="cover-img" id="cover-img" class="form-control" required>
+          <div class="mb-3">
+            <label for="cover-img" class="form-label">Cover Image</label>
+            <input type="file" name="cover-img" id="cover-img" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="tag" class="form-label">Note Tag</label>
+            <input type="text" name="tag" id="tag" class="form-control" placeholder="Note tag">
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label for="excerpt" class="form-label">Excerpt content</label>
+          <textarea name="excerpt" id="excerpt" rows="7" class="form-control" placeholder="Note excerpt..."></textarea>
+          <small class="input-footer">Excerpt must be under 200 character long.</small>
+        </div>
       </div>
 
       <div class="mb-3">
         <label class="form-label" for="content">Your Note</label>
-        <textarea class="form-control" name="content" id="content" rows="3" placeholder="Your Note..."
+        <textarea class="form-control" name="content" id="content" rows="5" placeholder="Your Note..."
           required></textarea>
+
       </div>
+
       <div class="mb-3">
         <button type="submit" class="btn btn-primary">Create</button>
       </div>

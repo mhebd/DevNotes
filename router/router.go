@@ -23,13 +23,19 @@ func Router() chi.Router {
 	r.Group(func(r chi.Router) {
 		r.Use(middlewares.Authentication)
 		r.Get("/dashboard", controller.Dashboard)
+
 		r.Get("/dashboard/notes", controller.NotesPage)
 		r.Get("/dashboard/notes/create-note", controller.CreateNotePage)
 		r.Post("/dashboard/notes/create-note", controller.CreateNote)
+
 		r.Get("/dashboard/categories", controller.CategoryPage)
 		r.Get("/dashboard/categories/{id}", controller.DeleteCategory)
 		r.Get("/dashboard/categories/create-category", controller.CreateCategoryPage)
 		r.Post("/dashboard/categories/create-category", controller.CreateCategory)
+
+		r.Get("/dashboard/pages", controller.PagesPage)
+		r.Get("/dashboard/pages/create-page", controller.CreatePageForm)
+		r.Post("/dashboard/pages/create-page", controller.CreatePage)
 	})
 
 	fs := http.FileServer(http.Dir("static"))

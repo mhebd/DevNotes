@@ -9,14 +9,15 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 // Fetch all data
-func FetchMany(w http.ResponseWriter, c *mongo.Collection, s interface{}) interface{} {
-	cursor, err := c.Find(context.Background(), bson.D{})
+func FetchMany(w http.ResponseWriter, c *mongo.Collection, s interface{}) error {
+	opts := options.Find().SetSort(bson.D{{Key: "created", Value: -1}})
+	cursor, err := c.Find(context.Background(), bson.M{}, opts)
 	if err != nil {
-		ServerErr(w, err)
-		return nil
+		return err
 	}
 	defer cursor.Close(context.Background())
 
@@ -26,13 +27,12 @@ func FetchMany(w http.ResponseWriter, c *mongo.Collection, s interface{}) interf
 		item := reflect.New(result.Type().Elem()).Interface()
 		err := cursor.Decode(item)
 		if err != nil {
-			ServerErr(w, err)
-			return nil
+			return err
 		}
 		result.Set(reflect.Append(result, reflect.ValueOf(item).Elem()))
 	}
 
-	return result.Interface()
+	return err
 }
 
 // Delete a item by id
@@ -49,3 +49,5 @@ func DeleteById(w http.ResponseWriter, r *http.Request, c *mongo.Collection) err
 	}
 	return nil
 }
+
+//

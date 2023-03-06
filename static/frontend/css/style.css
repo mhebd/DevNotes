@@ -183,6 +183,10 @@ body {
 }
 
 /* blog post styling */
+.featured-post article,
+.blog-post-wrapper article {
+	box-shadow: 0 0 53px #00000026 !important;
+}
 .featured-post img {
 	max-height: 350px;
 	width: 100%;

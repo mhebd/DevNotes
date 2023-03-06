@@ -22,5 +22,14 @@ type Note struct {
 	Content  string `bson:"content" required:"true"`
 	Category string `bson:"category" required:"true"`
 	Writer   string `bson:"writer" required:"true"`
+	Tag      string `bson:"tag"`
+	Excerpt  string `bson:"excerpt" required:"true"`
 	Created  string `bson:"created" default:"now"`
+}
+
+type Page struct {
+	Id      string `bson:"_id,omitempty"`
+	Title   string `bson:"title" required:"true" unique:"true"`
+	Content string `bson:"content" required:"true"`
+	Created string `bson:"created" default:"now"`
 }
