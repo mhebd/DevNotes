@@ -1,21 +1,25 @@
 {{define "frontend-widget"}}
 <div class="col-md-4 mb-4">
-  <aside>
-    <div class="sidebar-widget">
-      <div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
-        <h2 class="sidebar-widget-title text-center">
-          Categories
-        </h2>
-        <div class="sidebar-widget-content">
-          <ul>
-            {{range .Categories}}
-            <li><a href="/search?category={{.Category}}">{{.Category}}</a></li>
-            {{end}}
-          </ul>
-        </div>
-      </div>
+	<aside>
+		<div class="sidebar-widget">
+			<div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
+				<h2 class="sidebar-widget-title text-center">Categories</h2>
+				<div class="sidebar-widget-content">
+					<ul>
+						{{
+							range.Categories
+						}}
+						<li>
+							<a href="/search?category={{.Category}}">{{.Category}}</a>
+						</li>
+						{{
+							end
+						}}
+					</ul>
+				</div>
+			</div>
 
-      <!-- <div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
+			<!-- <div class="sidebar-single-widget bg-light my-3 wow animated fadeIn">
         <h2 class="sidebar-widget-title text-center">
           Archive
         </h2>
@@ -43,8 +47,8 @@
           </ul>
         </div>
       </div>  -->
-
-    </div>
-  </aside>
-</div> <!-- left side end-->
-{{end}}
+		</div>
+	</aside>
+</div>
+<!-- left side end-->
+{{ end }}

@@ -2,55 +2,75 @@
 
 {{define "content"}}
 <section>
-  <div class="container-fluid">
-    <div class="container">
-      <div class="header-widget-section">
+	<div class="container-fluid">
+		<div class="container">
+			<div class="header-widget-section"></div>
+			<!-- header widget end-->
 
-      </div> <!-- header widget end-->
+			<div class="row">
+				<div class="col-md-8 mb-4">
+					<div class="content-section-wrapper">
+						<div class="featured-post mb-4">
+							<article class="bg-light p-3 my-3 wow animated fadeInUp">
+								<img
+									src="{{.Article.Image}}"
+									alt="{{.Article.Title}}"
+									class="img-fluid wow animated zoomIn"
+								/>
 
-      <div class="row">
-        <div class="col-md-8 mb-4">
-          <div class="content-section-wrapper">
-            <div class="featured-post mb-4">
-              <article class="bg-light p-3 my-3 wow animated fadeInUp">
-                <img src="{{.Image}}" alt="{{.Title}}" class="img-fluid wow animated zoomIn">
+								<h2 class="post-heading my-3">
+									{{.Article.Title}}
+								</h2>
 
-                <h2 class="post-heading my-3">
-                  {{.Title}}
-                </h2>
+								<div class="post-meta mb-3">
+									<span><strong>By:</strong> {{.Article.Writer}}</span> |
+									<span><strong>On:</strong> {{.Article.Created}}</span> |
+									<span><strong>In:</strong> {{.Article.Category}}</span>
+								</div>
 
-                <div class="post-meta mb-3">
-                  <span><strong>By:</strong> {{.Writer}}</span> |
-                  <span><strong>On:</strong> {{.Created}}</span> |
-                  <span><strong>In:</strong> {{.Category}}</span> |
-                </div>
+								<div class="prg">
+									{{.Article.Content}}
+								</div>
 
-                <div class="prg">
-                  {{.Content}}
-                </div>
+								<div class="share-btn mt-4 post-single">
+									<!-- <strong class="float-left"><strong>Share:</strong></p> -->
+									<ul class="nav justify-content-center">
+										<li class="nav-item">
+											<a
+												href="#"
+												class="nav-link"
+												style="background: rgb(255, 38, 0)"
+												><i class="fab fa-pinterest-p"></i
+											></a>
+										</li>
+										<li class="nav-item">
+											<a href="#" class="nav-link" style="background: #0073ff"
+												><i class="fab fa-facebook-f"></i
+											></a>
+										</li>
+										<li class="nav-item">
+											<a href="#" class="nav-link" style="background: #1da1f2"
+												><i class="fab fa-twitter"></i
+											></a>
+										</li>
+										<li class="nav-item">
+											<a href="#" class="nav-link" style="background: #0077b5"
+												><i class="fab fa-linkedin-in"></i
+											></a>
+										</li>
+									</ul>
+								</div>
+							</article>
+						</div>
+						<!-- featured post end-->
+					</div>
+					<!-- post section end -->
+				</div>
+				<!-- right side end-->
 
-                <div class="share-btn mt-4 post-single">
-                  <!-- <strong class="float-left"><strong>Share:</strong></p> -->
-                  <ul class="nav justify-content-center">
-                    <li class="nav-item"><a href="#" class="nav-link" style="background: rgb(255, 38, 0);"><i
-                          class="fab fa-pinterest-p"></i></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link" style="background: #0073FF;"><i
-                          class="fab fa-facebook-f"></i></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link" style="background: #1DA1F2;"><i
-                          class="fab fa-twitter"></i></a>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link" style="background: #0077B5;"><i
-                          class="fab fa-linkedin-in"></i></a></li>
-                  </ul>
-                </div>
-              </article>
-            </div> <!-- featured post end-->
-          </div> <!-- post section end -->
-        </div> <!-- right side end-->
-
-        {{template "frontend-widget"}}
-      </div>
-    </div>
-  </div>
+				{{template "frontend-widget" .}}
+			</div>
+		</div>
+	</div>
 </section>
 {{ end }}

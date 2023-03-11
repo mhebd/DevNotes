@@ -81,9 +81,12 @@ body {
 }
 .top-nav a {
 	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .top-nav a:hover {
-	color: rgb(65, 65, 65);
+	color: rgb(166, 166, 166);
 }
 .navbar-toggler svg {
 	color: tomato;

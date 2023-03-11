@@ -1,44 +1,65 @@
 {{define "header"}}
 <!-- <nav class="sticky-top"> -->
 <nav class="">
-  <div class="container-fluid top-nav" id="top-navigation">
-    <div class="navbar navbar-expand-lg">
-      <div class="container">
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#top-menu">
-          <i class="fas fa-bars"></i>
-        </button> <!-- toggler end -->
+	<div class="container-fluid top-nav" id="top-navigation">
+		<div class="navbar navbar-expand-lg">
+			<div class="container">
+				<button
+					class="navbar-toggler"
+					data-toggle="collapse"
+					data-target="#top-menu"
+				>
+					<i class="fas fa-bars"></i>
+				</button>
+				<!-- toggler end -->
 
-        <div class="navbar-brand">
-          <a href="/">
-            <h2 class="brandding-name">DevNotes.</h2>
-            <img src="" alt="" class="img-fluid branding-img">
-          </a>
-          <p class="description">Developer Notes!</p>
-        </div> <!-- navbar brand end -->
+				<div class="navbar-brand">
+					<a href="/">
+						<h2 class="brandding-name">DevNotes.</h2>
+						<img src="" alt="" class="img-fluid branding-img" />
+					</a>
+					<p class="description">Developer Notes!</p>
+				</div>
+				<!-- navbar brand end -->
 
-        <div class="collapse navbar-collapse" id="top-menu">
-          <ul class="navbar-nav mx-auto">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-          </ul> <!-- menu end -->
+				<div class="collapse navbar-collapse" id="top-menu">
+					<ul class="navbar-nav mx-auto">
+						<li><a href="/">Home</a></li>
+						{{
+							range.Menus
+						}}
+						<li>
+							<a href="{{.Link}}">{{.Title}}</a>
+						</li>
+						{{
+							end
+						}}
+					</ul>
+					<!-- menu end -->
 
-          <div class="search-box ml-auto">
-            <form action="">
-              <div class="input-group">
-                <input type="text" class="form-control" id="s" placeholder="Search Anithing">
-                <div class="input-group-append">
-                  <button class="btn btn-success" id="searchform">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div> <!-- search box end -->
-        </div> <!-- top menu end -->
-      </div>
-    </div> <!-- navbar end-->
-  </div>
+					<div class="search-box ml-auto">
+						<form action="/search" method="get">
+							<div class="input-group">
+								<input
+									type="search"
+									class="form-control"
+									name="text"
+									placeholder="Search..."
+								/>
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-success">
+										<i class="fas fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- search box end -->
+				</div>
+				<!-- top menu end -->
+			</div>
+		</div>
+		<!-- navbar end-->
+	</div>
 </nav>
-{{end}}
+{{ end }}

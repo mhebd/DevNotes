@@ -1,0 +1,30 @@
+{{template "base-layout"}}
+
+{{define "content"}}
+<section>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="header-widget-section"></div>
+			<!-- header widget end-->
+
+			<div class="content-section-wrapper my-5">
+				<div class="featured-post mb-4">
+					<article class="bg-light p-3 my-3 wow animated fadeInUp">
+						<h2
+							class="post-heading my-3 text-center pb-5 font-weaght-bold text-uppercase"
+						>
+							{{.Page.Title}}
+						</h2>
+
+						<div class="prg">
+							{{.Page.Content}}
+						</div>
+					</article>
+				</div>
+				<!-- featured post end-->
+			</div>
+			<!-- post section end -->
+		</div>
+	</div>
+</section>
+{{ end }}

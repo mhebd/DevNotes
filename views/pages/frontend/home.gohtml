@@ -2,7 +2,9 @@
 
 {{define "content"}}
 <section>
-  {{template "slider" .}}
+  <div class="py-4">
+    {{template "slider" .}}
+  </div>
   <div class="container-fluid">
     <div class="container">
       <div class="header-widget-section">
@@ -13,13 +15,15 @@
         <div class="col-md-8 mb-4">
           <div class="content-section-wrapper">
             <div class="blog-post-wrapper">
-              {{range .Notes}}
-              <article class="bg-light p-3 my-3 wow animated fadeInUp">
+              <div class="row">
+                {{range .Notes}}
+                <div class="col-lg-6 mb-3">
+<article class="bg-light hg-article p-3 wow animated fadeInUp">
                 <div class="row">
-                  <div class="col-lg-5 mb-3 ">
+                  <div class="col-lg-12 mb-3 ">
                     <img src="{{.Image}}" alt="{{.Title}}" class="img-fluid wow animated zoomIn">
                   </div>
-                  <div class="col-lg-7">
+                  <div class="col-lg-12">
                     <h2 class="post-heading mb-3">
                       <a href="/article/{{.Id}}">{{.Title}}</a>
                     </h2>
@@ -31,30 +35,17 @@
                     </div>
 
                     <div class="prg">
-                      {{.Content}}
+                      {{.Excerpt}}
                     </div>
 
                     <div class="more-link  text-right">
                       <a href="/article/{{.Id}}" class="more">Read More &raquo;</a>
                     </div>
                   </div>
-                  <div class="col-12 mt-3">
-                    <div class="share-btn mt-4">
-                      <!-- <strong class="float-left"><strong>Share:</strong></p> -->
-                      <ul class="nav justify-content-center">
-                        <li class="nav-item"><a href="#" class="nav-link" style="background: rgb(255, 38, 0);"><i
-                              class="fab fa-pinterest-p"></i></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link" style="background: #0073FF;"><i
-                              class="fab fa-facebook-f"></i></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link" style="background: #1DA1F2;"><i
-                              class="fab fa-twitter"></i></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link" style="background: #0077B5;"><i
-                              class="fab fa-linkedin-in"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
               </article>
+                </div>
               {{end}}
+              </div>
             </div> <!-- main post end -->
           </div> <!-- post section end -->
         </div> <!-- right side end-->

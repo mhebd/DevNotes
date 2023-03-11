@@ -3,12 +3,11 @@
 {{define "backend-page"}}
 <div class="card mb-4">
 	<div class="card-header">
-		<strong>Create Note</strong
-		><span class="small ms-1">Create a new note</span>
+		<strong>Update Note</strong><span class="small ms-1">Update a note</span>
 	</div>
 	<div class="card-body">
 		<form
-			action="/dashboard/notes/create-note"
+			action="/dashboard/notes/update-note/{{.Article.Id}}"
 			method="post"
 			enctype="multipart/form-data"
 			class="form"
@@ -21,6 +20,7 @@
 					id="title"
 					type="text"
 					placeholder="Notes title"
+					value="{{.Article.Title}}"
 					required
 				/>
 			</div>
@@ -31,9 +31,15 @@
 						<label for="category" class="form-label">Select Category</label>
 						<select name="category" id="category" class="form-control">
 							{{
-								range.
+								range.Categories
 							}}
-							<option value="{{.Category}}">{{ .Category }}</option>
+							{{ if eq $.Article.Category .Category }}
+							<option value="{{ .Category }}" selected>{{ .Category }}</option>
+							{{ else }}
+							<option value="{{ .Category }}">{{ .Category }}</option>
+							{{
+								end
+							}}
 							{{
 								end
 							}}
@@ -47,7 +53,6 @@
 							name="cover-img"
 							id="cover-img"
 							class="form-control"
-							required
 						/>
 					</div>
 
@@ -59,17 +64,29 @@
 							id="tag"
 							class="form-control"
 							placeholder="Note tag"
+							value="{{.Article.Tag}}"
 						/>
 					</div>
 
 					<div class="mb-3 input-group">
 						<label for="featured">Make it featured post - </label>
+
+						{{ if eq $.Article.Featured true }}
+						<input
+							type="checkbox"
+							name="featured"
+							id="Featured"
+							checked
+							class="check-box pl-4"
+						/>
+						{{ else }}
 						<input
 							type="checkbox"
 							name="featured"
 							id="Featured"
 							class="check-box pl-4"
 						/>
+						{{ end }}
 					</div>
 				</div>
 
@@ -81,7 +98,8 @@
 						rows="7"
 						class="form-control"
 						placeholder="Note excerpt..."
-					></textarea>
+						>{{.Article.Excerpt}}</textarea
+					>
 					<small class="input-footer"
 						>Excerpt must be under 200 character long.</small
 					>
@@ -90,11 +108,14 @@
 
 			<div class="mb-3">
 				<label class="form-label" for="editor">Your Note</label>
-				<textarea name="content" id="editor"></textarea>
+				<textarea name="content" id="editor">
+					{{.Article.Content}}
+				</textarea
+				>
 			</div>
 
 			<div class="mb-3">
-				<button type="submit" class="btn btn-primary">Create</button>
+				<button type="submit" class="btn btn-primary">Update</button>
 			</div>
 		</form>
 	</div>

@@ -2,35 +2,61 @@
 
 {{define "backend-page"}}
 <div class="card mb-4">
-  <div class="card-header d-flex justify-content-between">
-    <p><strong>Pages</strong><span class="small ms-1">All Pages</span></p>
-    <a href="/dashboard/pages/create-page" class="btn btn-primary">Create a category</a>
-  </div>
-  <div class="card-body">
-    <table class="table table-hover table-striped table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Page Title</th>
-          <th scope="col" colspan="2">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{range $i, $v := .}}
-        <tr>
-          <th scope="row">
-            <script>
-              var i = `{{ $i }}`
-              document.write(1 + i * 1)
-            </script>
-          </th>
-          <td>{{$v.Title}}</td>
-          <td><button class="btn btn-dark">Edit</button></td>
-          <td><a href="/dashboard/pages/{{$v.Id}}" class="btn btn-danger text-light">Delete</a></td>
-        </tr>
-        {{end}}
-      </tbody>
-    </table>
-  </div>
+	<div class="card-header d-flex justify-content-between">
+		<p><strong>Pages</strong><span class="small ms-1">All Pages</span></p>
+		<a href="/dashboard/pages/create-page" class="btn btn-primary"
+			>Create a category</a
+		>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover table-striped table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Page Title</th>
+					<th scope="col">Slug</th>
+					<th scope="col">Created</th>
+					<th scope="col" colspan="2">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{range $i, $v := .}}
+				<tr>
+					<th scope="row">
+						<script>
+							var i = `{{ $i }}`;
+							document.write(1 + i * 1);
+						</script>
+					</th>
+					<td>
+						<a href="/page/{{ $v.Slug }}" class="text-dark">{{ $v.Title }}</a>
+					</td>
+					<td>
+						{{ $v.Slug }}
+					</td>
+					<td>
+						{{ $v.Created }}
+					</td>
+					<td>
+						<a
+							href="/dashboard/pages/update-page/{{ $v.Id }}"
+							class="btn btn-dark"
+							>Edit</a
+						>
+					</td>
+					<td>
+						<a
+							href="/dashboard/pages/delete/{{ $v.Id }}"
+							class="btn btn-danger text-light"
+							>Delete</a
+						>
+					</td>
+				</tr>
+				{{
+					end
+				}}
+			</tbody>
+		</table>
+	</div>
 </div>
-{{end}}
+{{ end }}

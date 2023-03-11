@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"reflect"
 
+	"devnotes.com/db"
 	"github.com/go-chi/chi/v5"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -50,4 +51,17 @@ func DeleteById(w http.ResponseWriter, r *http.Request, c *mongo.Collection) err
 	return nil
 }
 
-//
+// Fetch data by id
+func FetchById(w http.ResponseWriter, r *http.Request, data interface{}) error {
+	id := chi.URLParam(r, "id")
+	oid, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return err
+	}
+
+	err = db.Note.FindOne(context.TODO(), bson.D{{Key: "_id", Value: oid}}).Decode(data)
+	if err != nil {
+		return err
+	}
+	return nil
+}

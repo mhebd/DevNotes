@@ -15,6 +15,17 @@
   <link href="/static/backend/css/style.css" rel="stylesheet">
 
   <link href="/static/backend/vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
+
+  <script src="https://cdn.tiny.cloud/1/ar0nicbyp6om2zb3eoabvcw8un5eelh9v29ndqou1vmfwb0o/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#editor',
+      plugins: 'autolink lists link image',
+      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
+      menubar: false
+    });
+  </script>
 </head>
 
 <body>
